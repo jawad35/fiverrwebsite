@@ -1,0 +1,23 @@
+.cards {
+  background-color: #f2f5eb;
+  height: 100vh;
+  overflow-x: hidden;
+}
+.profile-card {
+  background-color: white;
+  border: 1px solid black;
+}
+.gigs-card {
+  background-color: white;
+  border: 1px solid black;
+}
+
+.avatar img {
+  border-radius: 50%;
+}
+
+.avatar .online-status {
+}
+.pro-text h6 {
+  font-weight: 700;
+}
