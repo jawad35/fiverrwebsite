@@ -1,7 +1,31 @@
 import React, { useState } from "react";
 import "./auth.css";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
+import axios from "axios";
+
 const SignIn = () => {
+  const history = useHistory();
+
+  const initialState = {
+    email: "",
+    password: "",
+  };
+  const [userData, setUserData] = useState(initialState);
+
+  const handleChangeInput = (e) => {
+    const { name, value } = e.target;
+    setUserData({ ...userData, [name]: value });
+  };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const res = await axios.post(
+      "http://localhost:5000/api/users/login",
+      userData
+    );
+    if (res) {
+      history.push("/home");
+    }
+  };
   return (
     <div class="container">
       <div class="row">
@@ -9,27 +33,33 @@ const SignIn = () => {
           <div class="card border-0 shadow rounded-3 my-5">
             <div class="card-body p-4 p-sm-5">
               <h5 class="card-title text-center mb-5 fw-light fs-5">Login</h5>
-              <form>
-                <div class="form-floating mb-3">
+              <form onSubmit={handleSubmit}>
+                <div className="mb-3 form-floating">
                   <input
                     type="email"
-                    class="form-control"
+                    className="form-control"
                     id="floatingInput"
                     placeholder="name@example.com"
+                    name="email"
+                    value={userData.email}
+                    onChange={handleChangeInput}
                   />
                   <label for="floatingInput">Email address</label>
                 </div>
-                <div class="form-floating mb-3">
+                <div className="mb-3 form-floating">
                   <input
                     type="password"
-                    class="form-control"
+                    className="form-control"
                     id="floatingPassword"
                     placeholder="Password"
+                    name="password"
+                    value={userData.password}
+                    onChange={handleChangeInput}
                   />
                   <label for="floatingPassword">Password</label>
                 </div>
 
-                <div class="form-check mb-3">
+                {/* <div class="form-check mb-3">
                   <input
                     class="form-check-input"
                     type="checkbox"
@@ -39,7 +69,7 @@ const SignIn = () => {
                   <label class="form-check-label" for="rememberPasswordCheck">
                     Remember password
                   </label>
-                </div>
+                </div> */}
                 <div class="d-grid">
                   <button
                     class="btn btn-primary btn-login text-uppercase fw-bold"

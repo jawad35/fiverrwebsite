@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import axios from "axios";
 import "./auth.css";
 const SignUp = () => {
+  const history = useHistory();
   const initialState = {
     fullname: "",
     username: "",
@@ -16,26 +17,33 @@ const SignUp = () => {
     const { name, value } = e.target;
     setUserData({ ...userData, [name]: value });
   };
-  const handleSubmit = async () => {
-    const res = await axios.post("/api/register", userData);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const res = await axios.post(
+      "http://localhost:5000/api/users/register",
+      userData
+    );
     console.log(res);
+
+    if (res) {
+      history.push("/");
+    }
   };
   return (
     <body>
-      <div class="container">
-        <div class="row">
-          <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
-            <div class="card border-0 shadow rounded-3 my-5">
-              <div class="card-body p-4 p-sm-5">
-                <h5 class="card-title text-center mb-5 fw-light fs-5">
+      <div className="container">
+        <div className="row">
+          <div className="mx-auto col-sm-9 col-md-7 col-lg-5">
+            <div className="my-5 border-0 shadow card rounded-3">
+              <div className="p-4 card-body p-sm-5">
+                <h5 className="mb-5 text-center card-title fw-light fs-5">
                   Sign Up
                 </h5>
-                <form>
-                  <div class="form-floating mb-3">
+                <form onSubmit={handleSubmit}>
+                  <div className="mb-3 form-floating">
                     <input
                       type="text"
-                      class="form-control"
-                      id="floatingInput"
+                      className="form-control"
                       placeholder="fullname"
                       name="fullname"
                       value={userData.fullname}
@@ -43,10 +51,10 @@ const SignUp = () => {
                     />
                     <label for="floatingInput">Full name</label>
                   </div>
-                  <div class="form-floating mb-3">
+                  <div className="mb-3 form-floating">
                     <input
                       type="text"
-                      class="form-control"
+                      className="form-control"
                       id="floatingInput"
                       placeholder="username"
                       name="username"
@@ -55,10 +63,10 @@ const SignUp = () => {
                     />
                     <label for="floatingInput">User name</label>
                   </div>
-                  <div class="form-floating mb-3">
+                  <div className="mb-3 form-floating">
                     <input
                       type="email"
-                      class="form-control"
+                      className="form-control"
                       id="floatingInput"
                       placeholder="name@example.com"
                       name="email"
@@ -67,10 +75,10 @@ const SignUp = () => {
                     />
                     <label for="floatingInput">Email address</label>
                   </div>
-                  <div class="form-floating mb-3">
+                  <div className="mb-3 form-floating">
                     <input
                       type="password"
-                      class="form-control"
+                      className="form-control"
                       id="floatingPassword"
                       placeholder="Password"
                       name="password"
@@ -79,10 +87,10 @@ const SignUp = () => {
                     />
                     <label for="floatingPassword">Password</label>
                   </div>
-                  <div class="form-floating mb-3">
+                  <div className="mb-3 form-floating">
                     <input
                       type="password"
-                      class="form-control"
+                      className="form-control"
                       id="floatingPassword"
                       placeholder="Confirm Password"
                       name="cf_password"
@@ -92,29 +100,31 @@ const SignUp = () => {
                     <label for="floatingPassword">Confirm Password</label>
                   </div>
 
-                  <div class="form-check mb-3">
+                  <div className="mb-3 form-check">
                     <input
-                      class="form-check-input"
+                      className="form-check-input"
                       type="checkbox"
                       value=""
                       id="rememberPasswordCheck"
                     />
-                    <label class="form-check-label" for="rememberPasswordCheck">
+                    <label
+                      className="form-check-label"
+                      for="rememberPasswordCheck"
+                    >
                       Remember password
                     </label>
                   </div>
-                  <div class="d-grid">
+                  <div className="d-grid">
                     <button
-                      class="btn btn-primary btn-login text-uppercase fw-bold"
+                      className="btn btn-primary btn-login text-uppercase fw-bold"
                       type="submit"
-                      onClick={handleSubmit}
                     >
                       Sign Up
                     </button>
                   </div>
-                  <hr class="my-4" />
+                  <hr className="my-4" />
 
-                  <div class="d-grid">
+                  <div className="d-grid">
                     <Link to="/signin">if you have already account</Link>
                   </div>
                 </form>
