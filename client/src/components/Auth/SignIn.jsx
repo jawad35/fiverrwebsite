@@ -18,10 +18,7 @@ const SignIn = () => {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const res = await axios.post(
-      "http://localhost:5000/api/users/login",
-      userData
-    );
+    const res = await axios.post("/api/users/login", userData);
     if (res) {
       history.push("/home");
     }
