@@ -1,0 +1,16 @@
+.request {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.request-title {
+  display: flex;
+  align-items: center;
+}
+
+.badge-text {
+  border-radius: 70%;
+  color: black;
+  padding: 3px;
+  border: 1px solid gainsboro;
+}

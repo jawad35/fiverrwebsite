@@ -4,13 +4,7 @@
   overflow-x: hidden;
 }
 .profile-card {
-  background-color: white;
-  border: 1px solid black;
-  margin: 40px;
-}
-.gigs-card {
-  border: 1px solid black;
-  margin: 40px;
+  margin: 10px auto;
 }
 
 .avatar img {
@@ -49,8 +43,90 @@
 
 .preview_publicmode p:hover {
   background-color: gray;
+  color: white;
 }
 .pro-details .pro-details-flex {
   display: flex;
   justify-content: space-between;
+}
+.availability {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px 0;
+}
+.icon-text {
+  display: flex;
+  align-items: center;
+}
+.avail-box p {
+  border: 1px solid gray;
+  padding: 5px;
+  border-radius: 5px;
+  font-weight: 500;
+}
+
+.avail-box p:hover {
+  background-color: gray;
+  color: white;
+}
+
+.gigs-text {
+  background-color: white;
+  padding: 15px;
+  font-weight: 500;
+}
+.gigs-cards {
+  margin: 10px auto;
+}
+
+.gig-card {
+  background-color: white;
+  padding-left: 0%;
+  padding: 10px;
+  margin-top: 30px;
+}
+.gig-card .title {
+  padding: 10px;
+  font-weight: 500;
+}
+.gig-price {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 10px;
+}
+.gig-price .price-text {
+  color: green;
+}
+.gig-price .price-text span {
+  font-weight: 700;
+  font-size: 17px;
+}
+.share-gig {
+  background-color: white;
+  border-radius: 50%;
+  position: absolute;
+  top: 13px;
+  color: green;
+  padding: 3px;
+  right: 0%;
+}
+.pro-desc {
+  display: flex;
+  justify-content: space-between;
+}
+.edit-desc {
+  color: blue;
+}
+.pro-desc .desc {
+  font-weight: 700;
+}
+
+.lang-title {
+  font-weight: 700;
+}
+.skill-title {
+  font-weight: 700;
+  margin-bottom: 10px;
 }
